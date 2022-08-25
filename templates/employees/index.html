@@ -1,0 +1,45 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block 'title' %}Empleados{% endblock 'title' %}
+
+{% block 'content' %}
+
+<a href="{% url 'add_employee' %}">Agregar Empleado</a>
+
+
+<h1>Lista Empleados</h1>
+
+
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Legajo</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Posicion</th>
+            <th scope="col"></th>
+
+        </tr>
+    </thead>
+
+    <tbody>
+        
+        {% for employee in employees %}
+        <tr>
+            <th scope="row">{{employee.id}}</th>
+            <td>{{employee.name}}</td>
+            <td>{{employee.lastname}}</td>
+            <td>{{employee.position}}</td>
+            <td><a class="btn btn-primary" href="{% url 'employee_details' id=employee.id %}">Details</a> <a class="btn btn-warning" href="{% url 'employee_edit' id=employee.id %}">Edit</a></td>
+            
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock 'content' %}
+
+

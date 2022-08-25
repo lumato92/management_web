@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block 'styles' %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock 'styles' %}
+{% block 'content' %}
+
+<form action="{% url 'add_employee' %}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_table}}
+    <input type="submit" value="Agregar">
+</form>
+
+
+{% endblock 'content' %}

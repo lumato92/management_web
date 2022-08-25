@@ -1,0 +1,171 @@
+/* Global variables */
+
+:root{
+    --color-primary:#f0f2f5;
+    --color-text: #54656f;
+    --font-main: Cocogoose;
+    --font-text: CocogooseLight;
+
+}
+
+/* Main Settings */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* background-color: var(--color-primary); */
+}
+@font-face{
+    font-family: Cocogoose;
+    src: url('../fonts/Cocogoose.ttf');
+}
+
+@font-face{
+    font-family: CocogoolseLight;
+    src: url('../fonts/CocogooseLight.ttf');
+}
+
+
+
+
+/* End Main Settings */
+
+
+h1,h2,h3,h4{
+    font-family: var(--font-main);
+}
+
+
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 80px;
+    background-color: var(--color-text);
+
+}
+
+nav ul{
+    list-style-type: none;
+    background-color: var(--color-text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+
+}
+
+nav ul li a{
+    text-decoration: none;
+    background-color: var(--color-text);
+    text-transform: uppercase;
+    font-family: var(--font-main);
+    color: var(--color-primary);
+    margin: 10px;
+}
+
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    margin: 50px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+/* Listado de contactos y todo  */
+
+.list{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--color-text);
+   
+    width: 50vw;
+    list-style-type: none;
+}
+
+.list li {
+    width: 100%;
+    padding: 15px;
+    font-family: var(--font-text);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid var(--color-text);
+}
+
+.btn{
+    padding: 10px 5px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.btn-detail{
+    background-color: var(--color-text);
+    color: white;
+}
+
+.btn-edit{
+    background-color: #fff159;
+    color: var(--color-text);
+}
+
+.btn-delete{
+    background-color: #f64c41;
+    color: white;
+}
+
+.search{
+    margin: 20px;
+    width: 50%;
+
+}
+.search-bar{
+    padding: 10px;
+    width: 80%;
+
+}
+
+.btn-search{
+    width: 18%;
+    background-color: var(--color-text);
+    color: #f0f2f5;
+    outline: none;
+    border: 0;
+    box-shadow: 0;
+    cursor: pointer;
+}
+
+.btn-search:hover{
+    background-color: #f0f2f5;
+    color: black;
+    transition: all .2;
+}
+
+
+.aux-btns{
+    width: 50%;
+    display: flex;
+    justify-content: flex-start;
+    margin: 10px;
+}
+
+.aux-btns, a{
+    padding-right: 10px;
+    text-decoration: none;
+}
+
+
+.alert-success{
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(26, 153, 26);
+    color: white;
+    
+}

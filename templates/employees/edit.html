@@ -1,0 +1,18 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block 'styles' %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
+{% endblock 'styles' %}
+{% block 'content' %}
+
+<form action="{% url 'employee_edit' id=id %}" method="POST">
+    {% csrf_token %}
+
+    {{form.as_table}}
+    <input type="submit" value="Guardar">
+</form>
+
+
+{% endblock 'content' %}
