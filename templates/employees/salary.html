@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block 'title' %}Salario{% endblock 'title' %}
+
+
+{% block 'content' %} 
+
+    <h1>Remuneracion Legajo</h1> {{employee.id}}
+
+    <div>
+        <h3>Informacion Laboral</h3>
+        <p>Legajo: <span>{{employee.id}}</span></p>
+        <p>Posicion: <span>{{employee.position}} </span></p>
+        <p>Salario Actual: <span>{{employee.salary}}</span></p>
+        <p>Lugar de Trabajo: <span>{{employee.place}}</span></p>
+        <p>Activo: <span> {% if employee.active %} Si 
+                {% else %}
+                 No    
+            {% endif %}</span></p>
+    </div>
+
+    <div>
+        <h3>Modificar Salario</h3>
+        <form action="{% url 'salary' id=id %}" method='POST'>
+            {% csrf_token %}
+            <label for="">Legajo</label>{{salary.employee_id}}
+            <label for="">Salario</label>{{salary.salary}}
+            <label for="">Fecha Incio</label>{{salary.startdate}}
+
+            
+            <input type="submit" value="Guardar">
+
+        </form>
+
+    </div>
+
+
+{% endblock 'content' %}  
+
+
+

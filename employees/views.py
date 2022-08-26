@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
-from .models import Employee
-from .forms import EmployeeForm
+from .models import Employee ,EmployeeTerm
+from .forms import EmployeeForm, EmployeeTermForm
 
 
 
@@ -9,6 +9,8 @@ from .forms import EmployeeForm
 # Create your views here.
 
 def index(request):
+
+# RETURN THE FULL LIST OF EMPLOYEES
 
     employees = Employee.objects.all()
     print(employees)
@@ -19,6 +21,8 @@ def index(request):
     return render(request,'employees/index.html',context)
 
 def add(request):
+
+# Add a new employee 
 
     if(request.method == 'GET'):
         form = EmployeeForm()
@@ -37,6 +41,15 @@ def add(request):
 
 
 def details(request, id):
+    """Show details of the Employee
+
+    Args:
+        request (): HTTP request GET
+        id (int): Id reffered to the employee
+
+    Returns:
+        Html template: Full info of employee
+    """
     employee = Employee.objects.get(id=id)
     print(employee)
     context = {
@@ -69,5 +82,35 @@ def edit(request, id):
         return redirect('employees')
 
 
-    # return HttpResponse(f'el id es {id}')
+def salary(request,id):
+    
+    if(request.method =='GET'):
+        
+        employee = Employee.objects.get(id=id)
+        
+        data = {
+            'employee_id':employee.id,
+        }
+        salary = EmployeeTermForm(data)
+        
+        
+        
+        context = {
+            'employee':employee,
+            'salary':salary,
+            'id':id
+        }
+        
+        
+        return render(request,'employees/salary.html',context)
+    
+    if(request.method =='POST'):
+        
+        form = EmployeeTermForm(request.POST)
+        form.save()
+        
+        employee = Employee.objects.get(id=id)
+        employee.salary =request.POST.get('salary')
+        employee.save()
 
+        return redirect('employees')

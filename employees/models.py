@@ -1,11 +1,12 @@
 
 from django.db import models
+from django.utils.timezone import now
 
 # Create your models here.
 
 class Position(models.Model):
     name = models.CharField(blank=False,null=False, max_length=50)
-    description = models.TextField(blank=True,null=True)
+    description = models.TextField(blank=False,null=True)
 
     def __str__(self):
         return self.name
@@ -40,15 +41,15 @@ class Employee(models.Model):
 
 
     def __str__(self):
-        return self.lastname
+        return str(self.id)
     
 
 class EmployeeTerm (models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     employee_id = models.ForeignKey(Employee,on_delete=models.CASCADE)
     salary = models.IntegerField(blank=False,null=False)
-    startdate = models.DateField(blank=False,null=False),
-    enddate = models.DateField(blank=True,null=True)
+    startdate = models.DateTimeField(blank=False,null=False)
+    # enddate = models.DateField(blank=True,null=True)
 
     def __str__(self):
         return self.id
